@@ -77,7 +77,7 @@ def test_is_empty_positive(input_string, result):
 def test_list_to_string_positive(input_string, joiner, result):
     string_utils = StringUtils()
     res = string_utils.list_to_string(input_string, joiner)
-    assert res == result
+    assert res == result   
 
     # негативные проверки
 @pytest.mark.parametrize( 'input_string, joiner, result', [

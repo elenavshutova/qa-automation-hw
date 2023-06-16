@@ -1,17 +1,6 @@
-1. def test_list_to_string_negative
+1;2. def test_capitalize_empty_string(input_string)
 Ожидаемый результат: 
-Возвращает пустую строку (None, ",", ""), 
+Выдаёт ошибку ValueError
 Фактический результат:
-object of type 'NoneType' has no len()
-
-2. def test_list_to_string_negative
-Ожидаемый результат: 
-Возвращает пустую строку ("string", ",", "")
-Фактический результат:
-AseertionError: assert 's,t,r,i,n,g'
-
-3. def test_list_to_string_negative
-Ожидаемый результат: 
-Возвращает пустую строку  ([1, 2, 3], None, "")
-Фактический результат:
-can only concatenate str (not "NoneType") to str
+DID NOT RAISE <class 'ValueError'>
+Небходимо дописать код, который осущесnвляет проверку на пустую строку 

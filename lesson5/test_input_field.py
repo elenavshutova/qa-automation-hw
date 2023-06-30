@@ -5,7 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
 
-def perform_search(driver):
+def perform_search_test(driver):
     search_locator = '[type="number"]'
     search_field = driver.find_element(By.CSS_SELECTOR, search_locator)
     search_field.send_keys("1000")
@@ -21,7 +21,7 @@ chrome_driver.maximize_window()
 chrome_driver.get("http://the-internet.herokuapp.com/inputs")
 
 # Выполнение поиска в Chrome
-perform_search(chrome_driver)
+perform_search_test(chrome_driver)
 
 # Закрытие драйвера Chrome
 chrome_driver.quit()
@@ -32,7 +32,7 @@ firefox_driver.maximize_window()
 firefox_driver.get("http://the-internet.herokuapp.com/inputs")
 
 # Выполнение поиска в Firefox
-perform_search(firefox_driver)
+perform_search_test(firefox_driver)
 
 # Закрытие драйвера Firefox
 firefox_driver.quit()

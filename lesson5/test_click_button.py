@@ -6,7 +6,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
-def perform_search(driver):
+def perform_search_test(driver):
     for _ in range(5):
         search_locator = '[onclick="addElement()"]'
         search_clickable = driver.find_element(By.CSS_SELECTOR, search_locator)
@@ -26,7 +26,7 @@ chrome_driver.maximize_window()
 chrome_driver.get("http://the-internet.herokuapp.com/add_remove_elements/")
 
 # Выполнение поиска в Chrome
-perform_search(chrome_driver)
+perform_search_test(chrome_driver)
 
 # Закрытие драйвера Chrome
 chrome_driver.quit()
@@ -37,7 +37,7 @@ firefox_driver.maximize_window()
 firefox_driver.get("http://the-internet.herokuapp.com/add_remove_elements/")
 
 # Выполнение поиска в Firefox
-perform_search(firefox_driver)
+perform_search_test(firefox_driver)
 
 # Закрытие драйвера Firefox
 firefox_driver.quit()

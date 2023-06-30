@@ -1,4 +1,3 @@
-from time import sleep
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as GeckoService
@@ -6,27 +5,22 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 def perform_search(driver):
-    for _ in range(5):
-        search_locator = '[onclick="addElement()"]'
-        search_clickable = driver.find_element(By.CSS_SELECTOR, search_locator)
-        ActionChains(driver).click(search_clickable).perform()
-
-#seconds_to_work = 1.3  # Сколько выполнять цикл, в секундах
-#start = time()  # время начала выполнения
-#while time() - start < seconds_to_work: Это для меня комментарий, пример как настроить цикл по времени
-
-    delete_button = driver.find_elements(By.CSS_SELECTOR, ".added-manually")
-    count = len(delete_button)
-    print("There are", count, "elements")
-
-    sleep(5)
+    modal_locator = '#modal'
+    close_locator = '#modal .modal-footer p'
+    
+    WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, modal_locator)))
+    search_clickable = driver.find_element(By.CSS_SELECTOR, close_locator)
+    ActionChains(driver).click(search_clickable).perform()
+    print("Окно закрыто")
 
 # Инициализация драйвера Chrome
 chrome_driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 chrome_driver.maximize_window()
-chrome_driver.get("http://the-internet.herokuapp.com/add_remove_elements/")
+chrome_driver.get("http://the-internet.herokuapp.com/entry_ad")
 
 # Выполнение поиска в Chrome
 perform_search(chrome_driver)
@@ -37,7 +31,7 @@ chrome_driver.quit()
 # Инициализация драйвера Firefox
 firefox_driver = webdriver.Firefox(service=GeckoService(executable_path=GeckoDriverManager().install()))
 firefox_driver.maximize_window()
-firefox_driver.get("http://the-internet.herokuapp.com/add_remove_elements/")
+firefox_driver.get("http://the-internet.herokuapp.com/entry_ad")
 
 # Выполнение поиска в Firefox
 perform_search(firefox_driver)

@@ -1,3 +1,4 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -5,6 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from pages.MainPage import MainPage
 from pages.ResultPage import ResultPage
 
+@pytest.mark.hw
 def test_form():
     browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     main_page = MainPage(browser)

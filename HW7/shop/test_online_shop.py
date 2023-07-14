@@ -1,3 +1,4 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -8,6 +9,7 @@ from pages.CartPage import CartPage
 from pages.CheckoutPage import CheckoutPage
 from pages.ResultPage import ResultPage
 
+@pytest.mark.hw
 def test_shop():
     browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     main_page = MainPage(browser)
